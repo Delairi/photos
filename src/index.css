@@ -21,4 +21,12 @@
     .container-row-end {
         @apply flex flex-row justify-end items-center;
     }
+
+    .container-row-between {
+        @apply flex flex-row justify-between items-center;
+    }
+
+    .button {
+        @apply cursor-pointer text-sm;
+    }
 }
