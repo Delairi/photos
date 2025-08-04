@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+@layer components {
+    .li  {
+        @apply text-sm text-[#3f3d3d] text-center;
+
+    }
+    .li.active {
+        @apply text-white font-bold rounded-md py-2;
+        background: rgb(76, 187, 154);
+    }
+
+    .container-row-center {
+        @apply flex flex-row items-center justify-center;
+    }
+
+    .container-row-start {
+        @apply flex flex-row justify-start items-center;
+    }
+
+    .container-row-end {
+        @apply flex flex-row justify-end items-center;
+    }
+
+    .container-row-between {
+        @apply flex flex-row justify-between items-center;
+    }
+
+    .button {
+        @apply cursor-pointer text-sm;
+    }
+}
