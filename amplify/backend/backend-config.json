@@ -30,6 +30,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "Signup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "photosutilsLayer": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -55,6 +60,22 @@
         {
           "category": "function",
           "resourceName": "Login"
+        }
+      ]
+    },
+    "AMPLIFY_function_Signup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Signup"
+        }
+      ]
+    },
+    "AMPLIFY_function_Signup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Signup"
         }
       ]
     },

@@ -7,26 +7,17 @@
 const {
     AuthFlowType,
     CognitoIdentityProviderClient,
-    InitiateAuthCommand
+    InitiateAuthCommand,
+    SignUpCommand
 } = require('@aws-sdk/client-cognito-identity-provider');
 const { SSMClient, GetParametersCommand } = require('@aws-sdk/client-ssm')
 const crypto = require('crypto')
-
-const getSecretHash = (username, clientId, clientSecret) => {
-    return crypto
-        .createHmac('sha256', clientSecret)
-        .update(username + clientId)
-        .digest('base64');
-};
-
 const ssm = new SSMClient({ region: 'us-east-2' });
 const client = new CognitoIdentityProviderClient({ region: 'us-east-2' });
-
-const loginCognito = async (username, password) => {
+const getParameters = async (username) => {
 
     const getParametersCommand = new GetParametersCommand({
-        Names: ['ClientId', 'ClientSecret'],
-        WithDecryption: true
+        Names: ['ClientId', 'ClientSecret']
     });
     const parameters = (await ssm.send(getParametersCommand))?.Parameters.reduce((prev, current) => {
         const name = current.Name
@@ -35,11 +26,27 @@ const loginCognito = async (username, password) => {
         return prev
     }, {})
 
-    const secretHash = getSecretHash(username, parameters.ClientId, parameters.ClientSecret)
+    return {
+        secretHash: crypto
+            .createHmac('sha256', parameters.ClientSecret)
+            .update(username + parameters.ClientId)
+            .digest('base64'),
+        clientId: parameters.ClientId,
+    };
+};
+
+
+
+
+const loginCognito = async (username, password) => {
+
+
+
+    const { secretHash, clientId } = await getParameters(username)
 
     const params = {
         AuthFlow: AuthFlowType.USER_PASSWORD_AUTH,
-        ClientId: parameters.ClientId,
+        ClientId: clientId,
         AuthParameters: {
             USERNAME: username,
             PASSWORD: password,
@@ -51,5 +58,30 @@ const loginCognito = async (username, password) => {
     return await client.send(command);
 }
 
+const signupCognito = async ({ username, password, email, name }) => {
 
-module.exports = { loginCognito, getSecretHash };
+    const { secretHash, clientId } = await getParameters(username)
+
+    const params = {
+        ClientId: clientId,
+        Username: username,
+        Password: password,
+        SecretHash: secretHash,
+        UserAttributes: [
+            {
+                Name: "email",
+                Value: email,
+            },
+            {
+                Name: "name",
+                Value: name,
+            },
+        ],
+    };
+
+    const command = new SignUpCommand(params);
+    return await client.send(command);
+
+}
+
+module.exports = { loginCognito, getParameters, signupCognito };
