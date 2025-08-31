@@ -10,6 +10,25 @@
       "StackName": "amplify-photos-dev-3994f",
       "StackId": "arn:aws:cloudformation:us-east-2:327820291301:stack/amplify-photos-dev-3994f/63f9dac0-70d1-11f0-993d-06767bd1c1a5",
       "AmplifyAppId": "d101chfvza5dh1"
+    },
+    "categories": {
+      "function": {
+        "Login": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/Login-654c663567306f315533-build.zip"
+        },
+        "utils": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/utils-4341655a6e3235494135-build.zip"
+        },
+        "photosutilsLayer": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersionb4a82a7b-build.zip"
+        }
+      },
+      "api": {
+        "PhotosAPI": {}
+      }
     }
   }
 }

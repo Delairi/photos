@@ -1,1 +1,94 @@
-{}
+{
+  "api": {
+    "PhotosAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "Login"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "Login": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "photosutilsLayer"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "photosutilsLayer": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    },
+    "utils": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_Login_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Login"
+        }
+      ]
+    },
+    "AMPLIFY_function_Login_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Login"
+        }
+      ]
+    },
+    "AMPLIFY_function_photosutilsLayer_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "photosutilsLayer"
+        }
+      ]
+    },
+    "AMPLIFY_function_photosutilsLayer_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "photosutilsLayer"
+        }
+      ]
+    },
+    "AMPLIFY_function_utils_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "utils"
+        }
+      ]
+    },
+    "AMPLIFY_function_utils_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "utils"
+        }
+      ]
+    }
+  }
+}
