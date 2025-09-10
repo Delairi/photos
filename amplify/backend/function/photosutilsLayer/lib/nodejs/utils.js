@@ -18,7 +18,7 @@ const client = new CognitoIdentityProviderClient({ region: 'us-east-2' });
 const getParameters = async (username) => {
 
     const getParametersCommand = new GetParametersCommand({
-        Names: ['ClientId', 'ClientSecret']
+        Names: ['ClientId']
     });
     const parameters = (await ssm.send(getParametersCommand))?.Parameters.reduce((prev, current) => {
         const name = current.Name
@@ -28,10 +28,10 @@ const getParameters = async (username) => {
     }, {})
 
     return {
-        secretHash: crypto
-            .createHmac('sha256', parameters.ClientSecret)
-            .update(username + parameters.ClientId)
-            .digest('base64'),
+        // secretHash: crypto
+        //     .createHmac('sha256', parameters.ClientSecret)
+        //     .update(username + parameters.ClientId)
+        //     .digest('base64'),
         clientId: parameters.ClientId,
     };
 };
@@ -43,7 +43,7 @@ const loginCognito = async (username, password) => {
 
 
 
-    const { secretHash, clientId } = await getParameters(username)
+    const { clientId } = await getParameters(username)
 
     const params = {
         AuthFlow: AuthFlowType.USER_PASSWORD_AUTH,
@@ -51,7 +51,7 @@ const loginCognito = async (username, password) => {
         AuthParameters: {
             USERNAME: username,
             PASSWORD: password,
-            SECRET_HASH: secretHash,
+            // SECRET_HASH: secretHash,
         },
     };
 
@@ -61,13 +61,13 @@ const loginCognito = async (username, password) => {
 
 const signupCognito = async ({ username, password, email, name }) => {
 
-    const { secretHash, clientId } = await getParameters(username)
+    const { clientId } = await getParameters(username)
 
     const params = {
         ClientId: clientId,
         Username: username,
         Password: password,
-        SecretHash: secretHash,
+        // SecretHash: secretHash,
         UserAttributes: [
             {
                 Name: "email",
@@ -88,11 +88,11 @@ const signupCognito = async ({ username, password, email, name }) => {
 
 const verifyCognito = async ({ code, username }) => {
 
-    const { secretHash, clientId } = await getParameters(username)
+    const { clientId } = await getParameters(username)
 
     const params = {
         ClientId: clientId,
-        SecretHash: secretHash,
+        // SecretHash: secretHash,
         Username: username,
         ConfirmationCode: code,
         ForceAliasCreation: false

@@ -23,7 +23,7 @@
         },
         "photosutilsLayer": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
-          "s3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersionf836744f-build.zip"
+          "s3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersionff6e9bf9-build.zip"
         },
         "Signup": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
@@ -36,6 +36,9 @@
       },
       "api": {
         "PhotosAPI": {}
+      },
+      "auth": {
+        "photos2e9ba79e": {}
       }
     }
   }
