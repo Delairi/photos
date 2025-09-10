@@ -28,6 +28,10 @@
         "Signup": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
           "s3Key": "amplify-builds/Signup-33334e4d4143726c3335-build.zip"
+        },
+        "VerifyAccount": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/VerifyAccount-51316167386c5a394744-build.zip"
         }
       },
       "api": {

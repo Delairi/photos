@@ -8,7 +8,8 @@ const {
     AuthFlowType,
     CognitoIdentityProviderClient,
     InitiateAuthCommand,
-    SignUpCommand
+    SignUpCommand,
+    ConfirmSignUpCommand
 } = require('@aws-sdk/client-cognito-identity-provider');
 const { SSMClient, GetParametersCommand } = require('@aws-sdk/client-ssm')
 const crypto = require('crypto')
@@ -84,4 +85,20 @@ const signupCognito = async ({ username, password, email, name }) => {
 
 }
 
-module.exports = { loginCognito, getParameters, signupCognito };
+
+const verifyCognito = async ({ code, username }) => {
+
+    const { secretHash, clientId } = await getParameters(username)
+
+    const params = {
+        ClientId: clientId,
+        SecretHash: secretHash,
+        Username: username,
+        ConfirmationCode: code,
+        ForceAliasCreation: false
+    };
+    const command = new ConfirmSignUpCommand(params);
+    return await client.send(command);
+}
+
+module.exports = { loginCognito, getParameters, signupCognito, verifyCognito };

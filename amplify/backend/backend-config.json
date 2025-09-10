@@ -9,6 +9,22 @@
           ],
           "category": "function",
           "resourceName": "Login"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "VerifyAccount"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "Signup"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -31,6 +47,11 @@
       "service": "Lambda"
     },
     "Signup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "VerifyAccount": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -76,6 +97,22 @@
         {
           "category": "function",
           "resourceName": "Signup"
+        }
+      ]
+    },
+    "AMPLIFY_function_VerifyAccount_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "VerifyAccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_VerifyAccount_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "VerifyAccount"
         }
       ]
     },

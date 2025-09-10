@@ -7,6 +7,20 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/auth/verify": {
+      "name": "/auth/verify",
+      "lambdaFunction": "VerifyAccount",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/auth/signup": {
+      "name": "/auth/signup",
+      "lambdaFunction": "Signup",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

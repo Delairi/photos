@@ -20,23 +20,56 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersionf836744f": {
+    "LambdaLayerVersionaca94aa8": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
-        "CompatibleRuntimes": {
-          "Ref": "runtimes"
-        },
+        "CompatibleRuntimes": [
+          "nodejs22.x"
+        ],
         "Content": {
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
+          "S3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersionaca94aa8-build.zip"
         },
-        "Description": {
-          "Ref": "description"
+        "Description": "Updated layer version 2025-09-04T06:45:05.209Z",
+        "LayerName": {
+          "Fn::Sub": [
+            "photosutilsLayer-${env}",
+            {
+              "env": {
+                "Ref": "env"
+              }
+            }
+          ]
+        }
+      },
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Retain"
+    },
+    "LambdaLayerPermissionPrivateaca94aa8": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": "arn:aws:lambda:us-east-2:327820291301:layer:photosutilsLayer-dev:7",
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerVersionf836744f": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "CompatibleRuntimes": [
+          "nodejs22.x"
+        ],
+        "Content": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersionf836744f-build.zip"
         },
+        "Description": "Updated layer version 2025-08-31T07:17:43.239Z",
         "LayerName": {
           "Fn::Sub": [
             "photosutilsLayer-${env}",
@@ -55,9 +88,7 @@
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": {
-          "Ref": "LambdaLayerVersionf836744f"
-        },
+        "LayerVersionArn": "arn:aws:lambda:us-east-2:327820291301:layer:photosutilsLayer-dev:6",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
@@ -252,7 +283,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersionf836744f"
+        "Ref": "LambdaLayerVersionaca94aa8"
       }
     }
   }
