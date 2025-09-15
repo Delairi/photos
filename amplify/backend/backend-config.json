@@ -1,0 +1,178 @@
+{
+  "api": {
+    "PhotosAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "Login"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "VerifyAccount"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "Signup"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "photos2e9ba79e": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "Login": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "photosutilsLayer"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "Signup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "VerifyAccount": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "photosutilsLayer": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    },
+    "utils": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_Login_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Login"
+        }
+      ]
+    },
+    "AMPLIFY_function_Login_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Login"
+        }
+      ]
+    },
+    "AMPLIFY_function_Signup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Signup"
+        }
+      ]
+    },
+    "AMPLIFY_function_Signup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Signup"
+        }
+      ]
+    },
+    "AMPLIFY_function_VerifyAccount_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "VerifyAccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_VerifyAccount_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "VerifyAccount"
+        }
+      ]
+    },
+    "AMPLIFY_function_photosutilsLayer_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "photosutilsLayer"
+        }
+      ]
+    },
+    "AMPLIFY_function_photosutilsLayer_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "photosutilsLayer"
+        }
+      ]
+    },
+    "AMPLIFY_function_utils_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "utils"
+        }
+      ]
+    },
+    "AMPLIFY_function_utils_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "utils"
+        }
+      ]
+    }
+  }
+}

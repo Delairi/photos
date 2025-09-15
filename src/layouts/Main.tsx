@@ -1,8 +1,10 @@
 import { Outlet } from "react-router"
 import Header from "./Header"
 import Menu from "../components/Menu/Menu"
+import setUser from "../hooks/setUser"
 
 const Main = () => {
+  setUser()
   return (
     <div className="h-screen">
       <Header />

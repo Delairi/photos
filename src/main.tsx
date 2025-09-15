@@ -7,7 +7,13 @@ import Albums from './pages/Albums.tsx';
 import Locked from './pages/Locked.tsx';
 import Trash from './pages/Trash.tsx';
 import Favorites from './pages/Favorites.tsx';
+import Login from './pages/Login.tsx';
+import { Amplify } from "aws-amplify";
+import awsExports from "./aws-exports.js";
+import Signup from './pages/Signup.tsx';
+import Confirm from './pages/Confirm.tsx';
 
+Amplify.configure(awsExports);
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,8 +41,20 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    element: <Login />,
+    path: "/auth/login"
+  },
+  {
+    element: <Signup />,
+    path: "/auth/signup"
+  },
+  {
+    element: <Confirm />,
+    path: "/auth/confirm"
+  }
 ]);
 
 createRoot(document.getElementById('root')!).render(
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
 )
