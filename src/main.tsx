@@ -11,6 +11,7 @@ import Login from './pages/Login.tsx';
 import { Amplify } from "aws-amplify";
 import awsExports from "./aws-exports.js";
 import Signup from './pages/Signup.tsx';
+import Confirm from './pages/Confirm.tsx';
 
 Amplify.configure(awsExports);
 const router = createBrowserRouter([
@@ -42,11 +43,15 @@ const router = createBrowserRouter([
   },
   {
     element: <Login />,
-    path: "/login"
+    path: "/auth/login"
   },
   {
     element: <Signup />,
-    path: "/signup"
+    path: "/auth/signup"
+  },
+  {
+    element: <Confirm />,
+    path: "/auth/confirm"
   }
 ]);
 
