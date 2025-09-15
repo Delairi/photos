@@ -9,7 +9,7 @@ const Home = () => {
   const [rows, setRows] = useState<CardProps[][]>([])
   const [Images, setImages] = useState<CardProps[]>(images)
   useEffect(() => {
-    const handleResize = () => Resize(container,Images,setRows)
+    const handleResize = () => Resize(container, Images, setRows)
     window.addEventListener('resize', handleResize);
     handleResize();
     return () => window.removeEventListener('resize', handleResize);
