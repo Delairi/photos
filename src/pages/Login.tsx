@@ -1,16 +1,27 @@
+import { useNavigate } from "react-router";
 import InputText from "../components/Inputs/InputText"
 import Header from "../layouts/Header";
 import { AuthLogin } from "../services/Auth/Login";
+import Alert from "../components/Alert/Alert";
+import { useState } from "react";
 const Login = () => {
 
-
+    const navigate = useNavigate()
+    const [error, setError] = useState('')
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const username = formData.get("username");
         const password = formData.get("password");
         if (typeof username === "string" && typeof password === "string") {
-            AuthLogin({ username, password });
+            AuthLogin({ username, password }).then(r => {
+                if (r.isSignedIn){
+                     navigate('/')
+                    }
+            }).catch(err => {
+                const message = err.message
+                setError(message)
+            })
 
         }
     }
@@ -25,6 +36,9 @@ const Login = () => {
                     onSubmit={onSubmit}
                     className="shadow-2xl rounded-2xl w-full max-w-sm bg-white p-10 flex flex-col gap-8">
                     <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">Sign In</h2>
+                    {
+                        !!error && <Alert type="error" message={error} />
+                    }
                     <div className="flex flex-col gap-5">
                         <InputText name="username" label="Username" />
                         <InputText name="password" label="Password" type="password" />

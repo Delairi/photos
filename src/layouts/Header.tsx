@@ -20,7 +20,7 @@ const Header = ({ hasBackground = true }: { hasBackground?: boolean }) => {
       <div className="flex flex-row gap-5">
         {
           user ?
-            <button onClick={Logout}>Log out</button>
+            <button className="cursor-pointer" onClick={Logout}>Log out</button>
             :
             <>
               <Link to='/auth/signup' className="button">Signup</Link>
