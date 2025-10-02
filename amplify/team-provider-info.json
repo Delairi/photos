@@ -32,6 +32,10 @@
         "VerifyAccount": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
           "s3Key": "amplify-builds/VerifyAccount-51316167386c5a394744-build.zip"
+        },
+        "S3Triggerf72c2f46": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/S3Triggerf72c2f46-5a797955792b46464170-build.zip"
         }
       },
       "api": {
@@ -39,6 +43,9 @@
       },
       "auth": {
         "photos2e9ba79e": {}
+      },
+      "storage": {
+        "photos": {}
       }
     }
   }
