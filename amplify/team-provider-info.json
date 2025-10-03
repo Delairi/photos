@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-photos-dev-3994f-unauthRole",
       "StackName": "amplify-photos-dev-3994f",
       "StackId": "arn:aws:cloudformation:us-east-2:327820291301:stack/amplify-photos-dev-3994f/63f9dac0-70d1-11f0-993d-06767bd1c1a5",
-      "AmplifyAppId": "d101chfvza5dh1"
+      "AmplifyAppId": "d101chfvza5dh1",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-photos-dev-3994f-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "function": {
@@ -36,6 +37,10 @@
         "S3Triggerf72c2f46": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
           "s3Key": "amplify-builds/S3Triggerf72c2f46-5a797955792b46464170-build.zip"
+        },
+        "Presign": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/Presign-2b72513344396e527576-build.zip"
         }
       },
       "api": {

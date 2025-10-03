@@ -25,6 +25,14 @@
           ],
           "category": "function",
           "resourceName": "Signup"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "Presign"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -72,6 +80,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "Presign": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "S3Triggerf72c2f46": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -112,6 +125,22 @@
         {
           "category": "function",
           "resourceName": "Login"
+        }
+      ]
+    },
+    "AMPLIFY_function_Presign_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Presign"
+        }
+      ]
+    },
+    "AMPLIFY_function_Presign_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Presign"
         }
       ]
     },

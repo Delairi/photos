@@ -21,6 +21,18 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/files/presign": {
+      "name": "/files/presign",
+      "lambdaFunction": "Presign",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
     }
   }
 }
