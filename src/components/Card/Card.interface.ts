@@ -1,6 +1,7 @@
 export interface CardProps {
     url: string,
-    id: number,
+    id?: number,
     width: number,
-    height:number
+    height:number,
+    date: Date
 }
