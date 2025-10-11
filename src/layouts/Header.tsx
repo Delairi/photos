@@ -3,11 +3,12 @@ import useStore from "../store"
 import { signOut } from "aws-amplify/auth"
 import { PlusImage } from "../components/Images"
 import { useId, type ChangeEvent } from "react"
-import { uploadImage } from "../services/Auth/Files"
+import { getUrlImage, uploadImage } from "../services/Auth/Files"
+import { getImageDimensions } from "../utils/getImageDimensions"
 
 const Header = ({ hasBackground = true }: { hasBackground?: boolean }) => {
 
-  const { user, setUser } = useStore()
+  const { user, setUser, images, setImages } = useStore()
   const inputFile = useId()
   const Logout = () => {
     signOut().then(() => {
@@ -21,16 +22,24 @@ const Header = ({ hasBackground = true }: { hasBackground?: boolean }) => {
 
   const addImage = async (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
-    if(!files) return
+    if (!files) return
     const filename = files[0].name
-    if(!user) return
-  
-    const response = await uploadImage(`${user.userId}/${filename}`,files[0])
+    if (!user) return
+
+    const response = await uploadImage(`${user.userId}/${filename}`, files[0])
 
     console.log(response.state)
     const uploaded = await response.result
     console.log(response.state)
-    
+    console.log(uploaded)
+    if (response.state === 'SUCCESS') {
+      const { url: { href } } = await getUrlImage(uploaded.path)
+      const date = new Date()
+      const dim = await getImageDimensions(href)
+      const imageObject = { url: href, width: dim.width, height: dim.height, date: date.toString() }
+      setImages([...images, imageObject])
+    }
+
   }
   return (
     <div className={`container-row-between p-4 ${hasBackground ? 'bg-[#f7f7f7]' : ''}`}>

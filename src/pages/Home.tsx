@@ -12,6 +12,7 @@ const Home = () => {
   const container = useRef<HTMLDivElement | null>(null)
   const [rows, setRows] = useState<CardProps[][]>([])
   useEffect(() => {
+    console.log(images)
     if (!images) return
     const handleResize = () => Resize(container, images, setRows)
     window.addEventListener('resize', handleResize);
@@ -21,9 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!user || images !== null) return
-    console.log('call')
     getImages(`${user?.userId}`).then(async (r) => {
-      console.log(r)
       const transform: CardProps[] = await Promise.all(
         r.items.map(async (image) => {
           const { url: { href, pathname } } = await getUrlImage(image.path)
@@ -32,7 +31,6 @@ const Home = () => {
           return { url: href, width: dim.width, height: dim.height, date }
         })
       ) 
-      console.log(transform)
       setImages(transform.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()))
     })
   }, [user])
