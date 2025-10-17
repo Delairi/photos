@@ -41,6 +41,14 @@
           ],
           "category": "function",
           "resourceName": "CreateAlbum"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CreateFolder"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -48,7 +56,7 @@
     }
   },
   "auth": {
-    "photos2e9ba79e": {
+    "photos066a08dc": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -75,6 +83,11 @@
   },
   "function": {
     "CreateAlbum": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "CreateFolder": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -138,6 +151,22 @@
         {
           "category": "function",
           "resourceName": "CreateAlbum"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateFolder_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateFolder"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateFolder_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateFolder"
         }
       ]
     },

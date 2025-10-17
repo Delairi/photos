@@ -34,9 +34,16 @@
         ]
       }
     },
-    "/albums": {
-      "name": "/albums",
+    "/album": {
+      "name": "/album",
       "lambdaFunction": "CreateAlbum",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/folders": {
+      "name": "/folders",
+      "lambdaFunction": "CreateFolder",
       "permissions": {
         "setting": "open"
       }
