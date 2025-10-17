@@ -33,6 +33,14 @@
           ],
           "category": "function",
           "resourceName": "Presign"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CreateAlbum"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -66,6 +74,11 @@
     }
   },
   "function": {
+    "CreateAlbum": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "Login": {
       "build": true,
       "dependsOn": [
@@ -112,6 +125,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_CreateAlbum_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateAlbum"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateAlbum_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateAlbum"
+        }
+      ]
+    },
     "AMPLIFY_function_Login_deploymentBucketName": {
       "usedBy": [
         {

@@ -5,6 +5,7 @@ import { PlusImage } from "../components/Images"
 import { useId, type ChangeEvent } from "react"
 import { getUrlImage, uploadImage } from "../services/Auth/Files"
 import { getImageDimensions } from "../utils/getImageDimensions"
+import { CreateAlbum } from "../services/Album"
 
 const Header = ({ hasBackground = true }: { hasBackground?: boolean }) => {
 
@@ -52,6 +53,9 @@ const Header = ({ hasBackground = true }: { hasBackground?: boolean }) => {
         {
           user ?
             <>
+            <button onClick={() => {
+              CreateAlbum("test 1")
+            }}>Create album</button>
               <button className="cursor-pointer" onClick={openBrowserFile}>
                 <PlusImage fill="#000" />
               </button>

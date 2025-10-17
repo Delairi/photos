@@ -15,6 +15,10 @@ const { SSMClient, GetParametersCommand } = require('@aws-sdk/client-ssm')
 const crypto = require('crypto')
 const ssm = new SSMClient({ region: 'us-east-2' });
 const client = new CognitoIdentityProviderClient({ region: 'us-east-2' });
+
+const { Pool } = require("pg");
+let pool;
+
 const getParameters = async (username) => {
 
     const getParametersCommand = new GetParametersCommand({
@@ -101,4 +105,40 @@ const verifyCognito = async ({ code, username }) => {
     return await client.send(command);
 }
 
-module.exports = { loginCognito, getParameters, signupCognito, verifyCognito };
+const migrations = [
+    `CREATE TABLE IF NOT EXISTS photos (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );`,
+  
+  `ALTER TABLE IF EXISTS photos 
+   ADD COLUMN IF NOT EXISTS username TEXT;` 
+];
+
+const getDbPool = async () => {
+    if (pool) return pool;
+    const secret = {
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+    };
+
+    pool = new Pool({
+        host: secret.host,
+        port: secret.port,
+        user: secret.user,
+        password: secret.password,
+        database: secret.database,
+        max: 3,
+        idleTimeoutMillis: 30000,
+        ssl: { rejectUnauthorized: false },
+    });
+    for (const query of migrations) {
+        await pool.query(query);
+    }
+    return pool
+}
+module.exports = { loginCognito, getParameters, signupCognito, verifyCognito, getDbPool };

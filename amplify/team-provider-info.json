@@ -24,7 +24,7 @@
         },
         "photosutilsLayer": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
-          "s3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersionff6e9bf9-build.zip"
+          "s3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersion5b6c123b-build.zip"
         },
         "Signup": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
@@ -41,6 +41,10 @@
         "Presign": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
           "s3Key": "amplify-builds/Presign-2b72513344396e527576-build.zip"
+        },
+        "CreateAlbum": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/CreateAlbum-51577954625668734d48-build.zip"
         }
       },
       "api": {

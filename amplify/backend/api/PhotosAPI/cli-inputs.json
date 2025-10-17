@@ -33,6 +33,13 @@
           "update"
         ]
       }
+    },
+    "/albums": {
+      "name": "/albums",
+      "lambdaFunction": "CreateAlbum",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }
