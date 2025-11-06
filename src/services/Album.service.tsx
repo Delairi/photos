@@ -1,7 +1,7 @@
 import { post } from "aws-amplify/api"
 import { fetchAuthSession } from 'aws-amplify/auth';
 
-export async function CreateAlbum(name: string) {
+export async function CreateAlbumService(name: string) {
     try {
 
         const session = await fetchAuthSession();
