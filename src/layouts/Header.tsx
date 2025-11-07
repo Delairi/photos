@@ -5,13 +5,11 @@ import { PlusImage } from "../components/Images"
 import { useId, type ChangeEvent } from "react"
 import { getUrlImage, uploadImage } from "../services/Auth/Files"
 import { getImageDimensions } from "../utils/getImageDimensions"
-import { CreateAlbumService } from "../services/Album.service"
 
 const Header = ({ hasBackground = true }: { hasBackground?: boolean }) => {
 
   const location = useLocation()
-  console.log(location)
-  const { user, setUser, images, setImages } = useStore()
+  const { user, setUser, images, setImages, setIsPopupCreateAlbum } = useStore()
   const inputFile = useId()
   const Logout = () => {
     signOut().then(() => {
@@ -44,6 +42,10 @@ const Header = ({ hasBackground = true }: { hasBackground?: boolean }) => {
     }
 
   }
+
+  const createAlbum = () => {
+    setIsPopupCreateAlbum(true)
+  }
   return (
     <div className={`container-row-between p-4 ${hasBackground ? 'bg-[#f7f7f7]' : ''}`}>
       <h1 className="text-lg tracking-tighter">
@@ -56,9 +58,7 @@ const Header = ({ hasBackground = true }: { hasBackground?: boolean }) => {
           user ?
             <>
               {
-                location.pathname === "/albums" && <button onClick={() => {
-                  CreateAlbumService("test 1")
-                }}>Create album</button>
+                location.pathname === "/albums" && <button onClick={createAlbum}>Create album</button>
               }
 
               {
