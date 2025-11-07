@@ -59,10 +59,27 @@ export const PlusImage = ({ fill }: SvgProps) => {
     )
 }
 
-export const CloseImage = () => {
+export const CloseImage = ({ fill = "black", width, height }: SvgProps) => {
     return (
-        <SvgIcon>
-            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-        </SvgIcon>
+        <svg className={`w-${width} h-${height}`} width="24" height="24" viewBox="0 0 24 24">
+            <path stroke={fill} stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+        </svg>
     )
 }
+
+export const FolderImage = ({ fill = "black", width, height }: SvgProps) => {
+    return (
+        <svg className={`w-${width} h-${height}`} width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke={fill} stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 8H4m0-2v13a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-5.032a1 1 0 0 1-.768-.36l-1.9-2.28a1 1 0 0 0-.768-.36H5a1 1 0 0 0-1 1Z" />
+        </svg>
+    )
+}
+
+export const FolderPlusImage = ({ fill = "black", width, height }: SvgProps) => {
+    return (
+        <svg fill="none" className={`w-${width} h-${height} text-white`} width="24" height="24" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 8H4m8 3.5v5M9.5 14h5M4 6v13a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-5.032a1 1 0 0 1-.768-.36l-1.9-2.28a1 1 0 0 0-.768-.36H5a1 1 0 0 0-1 1Z"/>
+        </svg>
+    )
+}
+

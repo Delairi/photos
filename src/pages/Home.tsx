@@ -6,9 +6,10 @@ import useStore from "../store"
 import { getImages, getUrlImage } from "../services/Auth/Files"
 import { getImageDimensions } from "../utils/getImageDimensions"
 import { encodeUrlPreserveSlash } from "../utils/normalizeUrl"
+import PreviewPopup from "../components/Popup/PreviewPopup"
 
 const Home = () => {
-  const { images, setImages, user } = useStore()
+  const { images, setImages, user, setIsPreviewImage, setPreviewImage, previewImage, isPreviewImage } = useStore();
   const container = useRef<HTMLDivElement | null>(null)
   const [rows, setRows] = useState<CardProps[][]>([])
   useEffect(() => {
@@ -30,23 +31,36 @@ const Home = () => {
           const dim = await getImageDimensions(href)
           return { url: href, width: dim.width, height: dim.height, date }
         })
-      ) 
+      )
       setImages(transform.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()))
     })
   }, [user])
 
 
-return (
-  <div ref={container} className="flex flex-col gap-2 w-full">
-    {rows.map((row, index) => (
-      <div key={index} className="flex flex-row flex-nowrap w-full">
-        {row.map((image) => (
-          <Card key={image.id} image={image} />
-        ))}
-      </div>
-    ))}
-  </div>
-)
+  const openImage = (url: any) => {
+    setIsPreviewImage(true);
+    setPreviewImage(url);
+  }
+
+  const closePreviewImage = () => {
+    setIsPreviewImage(false);
+  }
+  return (
+    <div ref={container} className="flex flex-col gap-2 w-full">
+      {rows.map((row, index) => (
+        <div key={index} className="flex flex-row flex-nowrap w-full">
+          {row.map((image) => (
+            <Card key={image.url} image={image} onClick={() => openImage(image.url)} />
+          ))}
+        </div>
+      ))}
+
+      {
+        isPreviewImage && previewImage && <PreviewPopup url={previewImage} close={closePreviewImage} />
+      }
+
+    </div>
+  )
 }
 
 export default Home

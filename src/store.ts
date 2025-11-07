@@ -8,6 +8,10 @@ interface StoreProps {
     setImages: (value: any) => void;
     setIsPopupCreateAlbum: (value: boolean) => void;
     isPopupCreateAlbum: boolean;
+    setIsPreviewImage: (value: boolean) => void;
+    isPreviewImage: boolean;
+    setPreviewImage: (value: string | null) => void;
+    previewImage: string | null;
 }
 
 
@@ -17,7 +21,11 @@ const useStore = create<StoreProps>((set) => ({
     images: null,
     setImages: (value: any) => set({ images: value }),
     isPopupCreateAlbum: false,
-    setIsPopupCreateAlbum: (value: boolean) => set({ isPopupCreateAlbum: value})
+    setIsPopupCreateAlbum: (value: boolean) => set({ isPopupCreateAlbum: value }),
+    setIsPreviewImage: (value: boolean) => set({ isPreviewImage: value }),
+    setPreviewImage: (value: string | null) => set({ previewImage: value }),
+    isPreviewImage: false,
+    previewImage: null
 }));
 
 export default useStore
