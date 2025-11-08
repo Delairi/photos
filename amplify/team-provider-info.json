@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-photos-dev-3994f-unauthRole",
       "StackName": "amplify-photos-dev-3994f",
       "StackId": "arn:aws:cloudformation:us-east-2:327820291301:stack/amplify-photos-dev-3994f/63f9dac0-70d1-11f0-993d-06767bd1c1a5",
-      "AmplifyAppId": "d101chfvza5dh1"
+      "AmplifyAppId": "d101chfvza5dh1",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-photos-dev-3994f-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "function": {
@@ -23,7 +24,7 @@
         },
         "photosutilsLayer": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
-          "s3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersionff6e9bf9-build.zip"
+          "s3Key": "amplify-builds/photosutilsLayer-LambdaLayerVersion5b6c123b-build.zip"
         },
         "Signup": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
@@ -32,13 +33,32 @@
         "VerifyAccount": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
           "s3Key": "amplify-builds/VerifyAccount-51316167386c5a394744-build.zip"
+        },
+        "S3Triggerf72c2f46": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/S3Triggerf72c2f46-5a797955792b46464170-build.zip"
+        },
+        "Presign": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/Presign-2b72513344396e527576-build.zip"
+        },
+        "CreateAlbum": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/CreateAlbum-314c7570555a41556e59-build.zip"
+        },
+        "CreateFolder": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/CreateFolder-6d4d744e364e5a303348-build.zip"
         }
       },
       "api": {
         "PhotosAPI": {}
       },
+      "storage": {
+        "photos": {}
+      },
       "auth": {
-        "photos2e9ba79e": {}
+        "photos066a08dc": {}
       }
     }
   }

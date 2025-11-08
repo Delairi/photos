@@ -21,6 +21,32 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/files/presign": {
+      "name": "/files/presign",
+      "lambdaFunction": "Presign",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    },
+    "/album": {
+      "name": "/album",
+      "lambdaFunction": "CreateAlbum",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/folders": {
+      "name": "/folders",
+      "lambdaFunction": "CreateFolder",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }
