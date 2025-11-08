@@ -25,6 +25,30 @@
           ],
           "category": "function",
           "resourceName": "Signup"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "Presign"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CreateAlbum"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "CreateFolder"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -32,7 +56,7 @@
     }
   },
   "auth": {
-    "photos2e9ba79e": {
+    "photos066a08dc": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -58,6 +82,16 @@
     }
   },
   "function": {
+    "CreateAlbum": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "CreateFolder": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "Login": {
       "build": true,
       "dependsOn": [
@@ -69,6 +103,16 @@
           "resourceName": "photosutilsLayer"
         }
       ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "Presign": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "S3Triggerf72c2f46": {
+      "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
@@ -94,6 +138,38 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_CreateAlbum_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateAlbum"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateAlbum_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateAlbum"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateFolder_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateFolder"
+        }
+      ]
+    },
+    "AMPLIFY_function_CreateFolder_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "CreateFolder"
+        }
+      ]
+    },
     "AMPLIFY_function_Login_deploymentBucketName": {
       "usedBy": [
         {
@@ -107,6 +183,38 @@
         {
           "category": "function",
           "resourceName": "Login"
+        }
+      ]
+    },
+    "AMPLIFY_function_Presign_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Presign"
+        }
+      ]
+    },
+    "AMPLIFY_function_Presign_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Presign"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Triggerf72c2f46_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Triggerf72c2f46"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Triggerf72c2f46_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Triggerf72c2f46"
         }
       ]
     },
@@ -173,6 +281,23 @@
           "resourceName": "utils"
         }
       ]
+    }
+  },
+  "storage": {
+    "photos": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ],
+          "category": "function",
+          "resourceName": "S3Triggerf72c2f46"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

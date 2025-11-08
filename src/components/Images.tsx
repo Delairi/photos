@@ -5,7 +5,7 @@ interface SvgProps {
     height?: string
 }
 
-const SvgIcon = ({ fill = "white", width="24px", height="24px", children }: SvgProps) => (
+const SvgIcon = ({ fill = "white", width = "24px", height = "24px", children }: SvgProps) => (
     <svg width={width} height={height} fill={fill}>
         {children}
     </svg>
@@ -27,7 +27,7 @@ export const AlbumImage = ({ fill }: SvgProps) => {
     )
 }
 
-export const FavoriteImage = ({fill}:SvgProps) => {
+export const FavoriteImage = ({ fill }: SvgProps) => {
     return (
         <SvgIcon fill={fill}>
             <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path>
@@ -50,3 +50,36 @@ export const LockedImage = ({ fill }: SvgProps) => {
         </SvgIcon>
     )
 }
+
+export const PlusImage = ({ fill }: SvgProps) => {
+    return (
+        <SvgIcon fill={fill}>
+            <path stroke={fill} stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
+        </SvgIcon>
+    )
+}
+
+export const CloseImage = ({ fill = "black", width, height }: SvgProps) => {
+    return (
+        <svg className={`w-${width} h-${height}`} width="24" height="24" viewBox="0 0 24 24">
+            <path stroke={fill} stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+        </svg>
+    )
+}
+
+export const FolderImage = ({ fill = "black", width, height }: SvgProps) => {
+    return (
+        <svg className={`w-${width} h-${height}`} width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke={fill} stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 8H4m0-2v13a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-5.032a1 1 0 0 1-.768-.36l-1.9-2.28a1 1 0 0 0-.768-.36H5a1 1 0 0 0-1 1Z" />
+        </svg>
+    )
+}
+
+export const FolderPlusImage = ({ fill = "black", width, height }: SvgProps) => {
+    return (
+        <svg fill="none" className={`w-${width} h-${height} text-white`} width="24" height="24" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 8H4m8 3.5v5M9.5 14h5M4 6v13a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-5.032a1 1 0 0 1-.768-.36l-1.9-2.28a1 1 0 0 0-.768-.36H5a1 1 0 0 0-1 1Z"/>
+        </svg>
+    )
+}
+

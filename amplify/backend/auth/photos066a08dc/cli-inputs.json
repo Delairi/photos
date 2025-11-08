@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "photos2e9ba79e_identitypool_2e9ba79e",
+    "identityPoolName": "photos066a08dc_identitypool_066a08dc",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "photos2e9ba79e",
-    "userPoolName": "photos2e9ba79e_userpool_2e9ba79e",
+    "resourceNameTruncated": "photos066a08dc",
+    "userPoolName": "photos066a08dc_userpool_066a08dc",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "photos2e9ba79e_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "photos066a08dc_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "2e9ba79e",
-    "resourceName": "photos2e9ba79e",
+    "sharedId": "066a08dc",
+    "resourceName": "photos066a08dc",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "userPoolGroupList": [],

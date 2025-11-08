@@ -12,6 +12,7 @@ import { Amplify } from "aws-amplify";
 import awsExports from "./aws-exports.js";
 import Signup from './pages/Signup.tsx';
 import Confirm from './pages/Confirm.tsx';
+import Album from './pages/Album.tsx';
 
 Amplify.configure(awsExports);
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         element: <Albums />,
         path: "/albums"
+      },
+      {
+        element: <Album />,
+        path: "/album/:id"
       },
       {
         element: <Favorites />,
