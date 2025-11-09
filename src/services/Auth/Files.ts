@@ -16,7 +16,11 @@ export async function uploadImage(path: string, file: File) {
 }
 
 export async function getImages(path:string){
-    return list({
-        path: `uploads/${path}`
-    })
+    try{
+        return list({
+            path: `uploads/${path}`
+        })
+    }catch(err){
+        alert(err)
+    }
 }

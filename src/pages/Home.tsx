@@ -7,6 +7,7 @@ import { getImages, getUrlImage } from "../services/Auth/Files"
 import { getImageDimensions } from "../utils/getImageDimensions"
 import { encodeUrlPreserveSlash } from "../utils/normalizeUrl"
 import PreviewPopup from "../components/Popup/PreviewPopup"
+import NoAuth from "../layouts/NoAuth"
 
 const Home = () => {
   const { images, setImages, user, setIsPreviewImage, setPreviewImage, previewImage, isPreviewImage } = useStore();
@@ -22,12 +23,15 @@ const Home = () => {
   }, [images]);
 
   useEffect(() => {
+    console.log('here', images)
     if (!user || images !== null) return
-    getImages(`${user?.userId}`).then(async (r) => {
+    console.log('pass', images)
+    getImages(`${user?.userId}`).then(async (images) => {
+      if (!images) return
       const transform: CardProps[] = await Promise.all(
-        r.items.map(async (image) => {
+        images.items.map(async (image) => {
           const { url: { href, pathname } } = await getUrlImage(image.path)
-          const date = r.items.find((item) => "/" + encodeUrlPreserveSlash(item.path) === pathname)?.lastModified as Date
+          const date = images?.items.find((item) => "/" + encodeUrlPreserveSlash(item.path) === pathname)?.lastModified as Date
           const dim = await getImageDimensions(href)
           return { url: href, width: dim.width, height: dim.height, date }
         })
@@ -54,11 +58,9 @@ const Home = () => {
           ))}
         </div>
       ))}
-
       {
         isPreviewImage && previewImage && <PreviewPopup url={previewImage} close={closePreviewImage} />
       }
-
     </div>
   )
 }

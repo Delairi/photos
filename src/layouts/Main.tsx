@@ -2,9 +2,12 @@ import { Outlet } from "react-router"
 import Header from "./Header"
 import Menu from "../components/Menu/Menu"
 import setUser from "../hooks/setUser"
+import useStore from "../store"
+import NoAuth from "./NoAuth"
 
 const Main = () => {
   setUser()
+  const { user } = useStore();
   return (
     <div className="h-screen">
       <Header />
@@ -14,7 +17,12 @@ const Main = () => {
             <Menu />
           </div>
           <div className="flex-1 h-full overflow-y-auto">
-            <Outlet />
+            {
+              !user ?
+                <NoAuth />
+                :
+                <Outlet />
+            }
           </div>
         </div>
       </div>
