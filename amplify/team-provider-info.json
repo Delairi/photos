@@ -49,6 +49,14 @@
         "CreateFolder": {
           "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
           "s3Key": "amplify-builds/CreateFolder-6d4d744e364e5a303348-build.zip"
+        },
+        "GetFolders": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/GetFolders-336a3879684b684c5838-build.zip"
+        },
+        "Migrations": {
+          "deploymentBucketName": "amplify-photos-dev-3994f-deployment",
+          "s3Key": "amplify-builds/Migrations-476f2b6e484d4e6f4b47-build.zip"
         }
       },
       "api": {

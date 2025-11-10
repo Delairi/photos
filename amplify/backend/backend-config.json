@@ -92,6 +92,11 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "GetFolders": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "Login": {
       "build": true,
       "dependsOn": [
@@ -103,6 +108,11 @@
           "resourceName": "photosutilsLayer"
         }
       ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "Migrations": {
+      "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
@@ -170,6 +180,22 @@
         }
       ]
     },
+    "AMPLIFY_function_GetFolders_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetFolders"
+        }
+      ]
+    },
+    "AMPLIFY_function_GetFolders_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "GetFolders"
+        }
+      ]
+    },
     "AMPLIFY_function_Login_deploymentBucketName": {
       "usedBy": [
         {
@@ -183,6 +209,22 @@
         {
           "category": "function",
           "resourceName": "Login"
+        }
+      ]
+    },
+    "AMPLIFY_function_Migrations_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Migrations"
+        }
+      ]
+    },
+    "AMPLIFY_function_Migrations_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Migrations"
         }
       ]
     },

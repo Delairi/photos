@@ -5,7 +5,7 @@ const Menu = () => {
 
   const location = useLocation()
   const isPhotos = location.pathname === '/' ? 'active' : '';
-  const isAlbum = location.pathname.includes('albums') ? 'active' : '';
+  const isAlbum = location.pathname.includes('album') ? 'active' : '';
   const isFavorites = location.pathname.includes('favorites') ? 'active' : '';
   const isTrash = location.pathname.includes('trash') ? 'active' : '';
   const isLockedFolder = location.pathname.includes('locked') ? 'active' : '';

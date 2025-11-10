@@ -1,5 +1,31 @@
-import { post } from "aws-amplify/api"
+import { get, post } from "aws-amplify/api"
 import { fetchAuthSession } from 'aws-amplify/auth';
+import type { AlbumProps } from "../interfaces/Album";
+
+export async function GetAlbumsService(): Promise<AlbumProps[] | undefined> {
+    try {
+
+        const session = await fetchAuthSession();
+        const token = session.tokens?.idToken?.toString();
+
+        const response = await get({
+            apiName: 'PhotosAPI',
+            path: '/folders',
+            options: {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+            },
+        }).response;
+
+        const data = await response.body.json() as unknown as AlbumProps;
+        console.log('GET succeeded:', data);
+        return data;
+    } catch (error) {
+        console.log('GET failed: ', error);
+    }
+}
 
 export async function CreateAlbumService(name: string) {
     try {
@@ -12,14 +38,14 @@ export async function CreateAlbumService(name: string) {
             path: '/folders',
             options: {
                 body: {
-                    name
+                    name,
                 },
-                 headers: {
+                headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
-                 },
+                },
             },
-            
+
         });
 
         const { body } = await create.response;
